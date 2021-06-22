@@ -143,7 +143,7 @@ height:80%;
   border-radius: 10px;
   height:50px; 
   width:273px;
-  background-color: rgb(126 122 122);
+  background-color: rgb(213 208 208);
 
 }
 ::placeholder{
@@ -172,7 +172,7 @@ height:80%;
   border-radius: 10px;
 }
 button{
-  background-color: rgb(43, 42, 42);
+  background-color:rgb(86 82 82);
   color:#c0c0c0 ;
 }
 button:active{
