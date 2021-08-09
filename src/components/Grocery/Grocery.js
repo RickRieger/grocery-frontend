@@ -5,6 +5,7 @@ import Button from '../common/Button';
 import './Grocery.css';
 const URL = 'http://localhost:3001';
 
+
 export class Grocery extends Component {
   state = {
     groceryList: [],
@@ -13,6 +14,7 @@ export class Grocery extends Component {
     errorMessage: '',
     canEdit: false,
     editInput: '',
+    priority: false,
   };
   async componentDidMount() {
     try {
@@ -159,14 +161,14 @@ export class Grocery extends Component {
   handleInputOnChange = (event) => {
     this.setState({
       groceryInput: event.target.value,
-      error:null,
+      error: null,
     });
     console.log(this.state.groceryInput);
   };
   handleEditOnChange = (event) => {
     this.setState({
       editInput: event.target.value,
-      error:null,
+      error: null,
     });
   };
   sortByDate = async (sortOrder) => {
@@ -194,6 +196,18 @@ export class Grocery extends Component {
     } catch (e) {
       console.log(e);
     }
+  };
+  handleCheckboxChecked = (event) => {
+    if (event.value === true) {
+      this.setState({
+        priority: true,
+      });
+    } else {
+      this.setState({
+        priority: false,
+      });
+    }
+    console.log(event)
   };
   render() {
     return (
@@ -227,13 +241,13 @@ export class Grocery extends Component {
                 />
               )}
               {this.state.canEdit ? (
-                <Button 
+                <Button
                   className="submit-and-edit-btn"
                   handleClickFunction={() => this.handleEditByID2()}
                   buttonName="edit"
                 />
               ) : (
-                <Button 
+                <Button
                   className="submit-and-edit-btn"
                   handleClickFunction={() => this.handleOnSubmit()}
                   buttonName="submit"
@@ -273,6 +287,7 @@ export class Grocery extends Component {
                       key={item._id}
                       item={item}
                       handleDeleteByID={this.handleDeleteByID}
+                      handleCheckboxChecked={this.handleCheckboxChecked}
                       handleDoneByID={this.handleDoneByID}
                       handleEditByID1={this.handleEditByID1}
                       inputID={item._id}

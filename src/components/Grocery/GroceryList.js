@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 export class GroceryList extends Component {
   render() {
     const { grocery, _id, purchased } = this.props.item;
-    const { handleDeleteByID, handleDoneByID, handleEditByID1 } = this.props;
-
+    const { handleDeleteByID, handleDoneByID, handleEditByID1,handleCheckboxChecked } = this.props;
+    console.log(this)
     return (
       <div className="task-row">
         <div className="class-row">
-          <input type="checkbox" />
+          <input type="checkbox" 
+          id={this.props.item._id}
+     
+          onChange={(event) => handleCheckboxChecked(event)} 
+          />
           <label>Priority</label>
           <p
             className={`${purchased ? 'complete' : ''}`}
